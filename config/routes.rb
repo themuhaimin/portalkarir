@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'static_pages#beranda'
+
+  get 'tentang' => 'static_pages#tentang'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

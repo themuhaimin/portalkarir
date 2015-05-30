@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <%= link_to image_tag("carfix-logo.png", alt: "CARfix Karir"), root_path, id:"logo"  %>
+    <button type="button" class="btn navbar-toggle" data-toggle="collapse" 
+    data-target=".navbar-collapse" >
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+    </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right" >
+        <li><%= link_to "Beranda", root_path  %></li>
+        <li><%= link_to "Tentang CARfix", tentang_path   %></li>
+      </ul>
+    </div>
+  </div>
+</header>
