@@ -13,6 +13,7 @@ gem 'sdoc',         '0.4.0', group: :doc
 # gem 'public_activity'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'devise-i18n'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'will_paginate',        '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'

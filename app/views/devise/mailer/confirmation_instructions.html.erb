@@ -1,0 +1,6 @@
+<p><%= t('.greeting', :recipient => @resource.email, :default => "Selamat Datang di Portal Karir CARfix Indonesia #{@resource.email}!") %></p>
+
+<p><%= t('.instruction', :default => "Konfimasi akun Anda dengan klik link di bawah ini:") %></p>
+
+<p><%= link_to t('.action', :default => "Konfirmasi"),
+         confirmation_url(@resource, :confirmation_token => @token, locale: I18n.locale) %></p>
