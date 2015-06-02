@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Daftar Pendidikans</h1>
+<%= link_to 'Buat Pendidikan Baru', new_pendidikan_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Level pend</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pendidikans.each do |pendidikan| %>
+      <tr>
+        <td><%= pendidikan.level_pend %></td>
+        <td><%= link_to 'Tampilkan', pendidikan %></td>
+        <td><%= link_to 'Edit', edit_pendidikan_path(pendidikan) %></td>
+        <td><%= link_to 'Hapus', pendidikan, method: :delete, data: { confirm: 'Anda yakin akan menghapus?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -1,0 +1,21 @@
+<%= form_for(@pendidikan) do |f| %>
+  <% if @pendidikan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pendidikan.errors.count, "error") %> membuat perubahan tidak dapat disimpan:</h2>
+
+      <ul>
+      <% @pendidikan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :level_pend %><br>
+    <%= f.text_field :level_pend %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

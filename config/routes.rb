@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :pendidikans
+
+  resources :jabatans
   devise_for :users
   
   root 'static_pages#beranda'

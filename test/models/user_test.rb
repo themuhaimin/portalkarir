@@ -1,6 +1,5 @@
 require 'test_helper'
 
-
 class UserTest < ActiveSupport::TestCase
   
   def setup
@@ -21,7 +20,6 @@ class UserTest < ActiveSupport::TestCase
     @user.email = " "
     assert_not @user.valid?
   end
-  
 
   test "email dengan alamat yang valid" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
@@ -32,7 +30,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  test "email dengan alamat yang valid" do
+  test "email dengan alamat yang tidak valid" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.]
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
@@ -58,6 +56,5 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
-
 
 end
