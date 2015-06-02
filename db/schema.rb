@@ -21,19 +21,13 @@ ActiveRecord::Schema.define(version: 20150602062439) do
 
   add_index "jabatans", ["nama_jabatan"], name: "index_jabatans_on_nama_jabatan", unique: true
 
-  create_table "pendididikans", force: :cascade do |t|
-    t.string   "level_pend", default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "pendididikans", ["level_pend"], name: "index_pendidikans_on_level_pend", unique: true
-
   create_table "pendidikans", force: :cascade do |t|
     t.string   "level_pend"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "pendidikans", ["level_pend"], name: "index_pendidikans_on_level_pend", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

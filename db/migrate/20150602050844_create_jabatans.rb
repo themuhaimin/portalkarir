@@ -4,7 +4,7 @@ class CreateJabatans < ActiveRecord::Migration
       t.string :nama_jabatan,  null: false, default: ""
 
       t.timestamps null: false
-      add_index :jabatans, :nama_jabatan,        unique: true
     end
+    add_index :jabatans, :nama_jabatan, unique: true
   end
 end

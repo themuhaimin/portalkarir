@@ -5,5 +5,6 @@ class CreatePendidikans < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :pendidikans, :level_pend, unique: true
   end
 end
