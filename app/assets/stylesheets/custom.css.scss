@@ -5,6 +5,11 @@
 
 body {
   padding-top: 60px;
+  a {
+    &:visited {
+      text-decoration: none;
+    }
+  }
 }
 
 section {

@@ -1,7 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  level_pend: MyString
-
-two:
-  level_pend: MyString
