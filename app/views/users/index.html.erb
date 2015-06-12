@@ -1,0 +1,21 @@
+<% provide(:title, 'Daftar users') %>
+<h1>Daftar User</h1>
+
+<%= will_paginate  %>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li><%= user.nama %>
+    <% if user.id!=current_user.id %>
+    <%= link_to "Hapus Akun", user, method: :delete,
+    data: { confirm: "Anda yakin menghapus?" }, class: "btn btn-primary" %>
+    <% end %>
+    <% unless user.admin? %>
+    <%= link_to "Set Admin", setter_admin_for_user_path(user.id),
+    data: { confirm: "Jadikan Admin?" }, class: "btn btn-primary" %>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate  %>

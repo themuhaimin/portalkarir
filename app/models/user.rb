@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :nama,  presence: true, length: { maximum: 15 }
+  has_one :profil, dependent: :destroy
+  accepts_nested_attributes_for :profil
 end

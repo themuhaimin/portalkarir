@@ -5,12 +5,12 @@
 
 body {
   padding-top: 60px;
-  a {
-    &:visited {
-      text-decoration: none;
-    }
   }
-}
+
+
+a.btn:visited {
+      color : #fff;
+      }
 
 section {
   overflow: auto;
@@ -148,3 +148,14 @@ $gray-medium-light: #eaeaea;
     text-align: left;
  }
  
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}

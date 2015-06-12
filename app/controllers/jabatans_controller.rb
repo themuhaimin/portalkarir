@@ -1,10 +1,10 @@
 class JabatansController < ApplicationController
-  before_action :set_jabatan, only: [:show, :edit, :update, :destroy]
+  before_action :set_jabatan, :admin_user, only: [:show, :edit, :update, :destroy]
 
   # GET /jabatans
   # GET /jabatans.json
   def index
-    @jabatans = Jabatan.all
+    @jabatans = Jabatan.paginate(page: params[:page],:per_page => 10)
   end
 
   # GET /jabatans/1
@@ -71,4 +71,9 @@ class JabatansController < ApplicationController
     def jabatan_params
       params.require(:jabatan).permit(:nama_jabatan)
     end
+  
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+    
 end

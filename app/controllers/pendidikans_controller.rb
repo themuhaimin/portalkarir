@@ -1,10 +1,10 @@
 class PendidikansController < ApplicationController
-  before_action :set_pendidikan, only: [:show, :edit, :update, :destroy]
+  before_action :set_pendidikan, :admin_user, only: [:show, :edit, :update, :destroy]
 
   # GET /pendidikans
   # GET /pendidikans.json
   def index
-    @pendidikans = Pendidikan.all
+    @pendidikans = Pendidikan.paginate(page: params[:page],:per_page => 10)
   end
 
   # GET /pendidikans/1
@@ -70,5 +70,9 @@ class PendidikansController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pendidikan_params
       params.require(:pendidikan).permit(:level_pend)
+    end
+    
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

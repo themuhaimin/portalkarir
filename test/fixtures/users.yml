@@ -16,6 +16,12 @@ pelamar:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   admin: false
 
+lain:
+  email: 'pelamarlain@example.com'
+  nama : 'pelamar lain'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  admin: false
+
 <% 10.times do |n| %>
 pelamar<%= n %>:
   email: <%= "pelamar#{n}@example.com" %>

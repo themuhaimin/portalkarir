@@ -2,7 +2,7 @@ require 'test_helper'
 
 class JabatansControllerTest < ActionController::TestCase
   setup do
-    @jabatan = jabatans(:one)
+    @jabatan = jabatans(:mekanik)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class JabatansControllerTest < ActionController::TestCase
 
   test "should create jabatan" do
     assert_difference('Jabatan.count') do
-      post :create, jabatan: { nama_jabatan: @jabatan.nama_jabatan }
+      post :create, jabatan: { nama_jabatan: 'Direktur' }
     end
 
     assert_redirected_to jabatan_path(assigns(:jabatan))

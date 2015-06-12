@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PendidikansControllerTest < ActionController::TestCase
   setup do
-    @pendidikan = pendidikans(:one)
+    @pendidikan = pendidikans(:S1)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class PendidikansControllerTest < ActionController::TestCase
 
   test "should create pendidikan" do
     assert_difference('Pendidikan.count') do
-      post :create, pendidikan: { level_pend: @pendidikan.level_pend }
+      post :create, pendidikan: { level_pend: 'SMA' }
     end
 
     assert_redirected_to pendidikan_path(assigns(:pendidikan))

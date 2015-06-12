@@ -1,0 +1,29 @@
+<% provide(:title, @user.nama) %>
+<h2><%= @user.nama %></h2>
+<h2><%= @user.email %></h2>
+
+<% if @profil.nil? && current_user.id=@user.id? %>
+    <%= link_to "Buat Profil", new_user_profil_path(current_user), class: "btn btn-primary" %>
+<% elsif @profil.nil? %>
+  Belum Ada Profil
+<% else %>
+<div>
+    Nama Lengkap        : <%= @profil.nama_lengkap %><br/>
+    No. Identitas       : <%= @profil.no_identitas %><br/>
+    Jenis Kelamin       : <% if @profil.jenis_kelamin? %>Perempuan
+                    <% else %>Laki-laki
+                    <% end %>
+                    <br/>
+    Alamat              : <%= @profil.alamat %><br/>
+    Tempat Lahir        : <%= @profil.tempat_lahir %><br/>
+    Tanggal Lahir       : <%= @profil.tgl_lahir %><br/>
+    Pendidikan Terakhir : <%= @profil.pendidikan_id %><br/>
+    Sekolah/Universitas : <%= @profil.nama_pend %><br/>
+    Jurusan             : <%= @profil.jurusan %><br/>
+    Nilai               : <%= @profil.nilai %><br/>
+</div>
+  
+  <% if current_user.id=@user.id? %>
+     <%= link_to "Edit", edit_user_profil_path(current_user), class: "btn btn-primary" %>
+  <% end %>
+<% end %>

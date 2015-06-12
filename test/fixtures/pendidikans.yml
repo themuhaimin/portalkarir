@@ -1,2 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+SMK:
+  level_pend: 'SMK'
+  
+S1:
+  level_pend: 'S1'
+  
+S2:
+  level_pend: 'S2'

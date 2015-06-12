@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   resources :pendidikans
-
   resources :jabatans
   devise_for :users
+  resources :users do
+    resource :profil 
+    member do 
+     get :set_admin, :as => :setter_admin_for 
+    end
+  end
+  
   
   root 'static_pages#beranda'
   get 'tentang' => 'static_pages#tentang'

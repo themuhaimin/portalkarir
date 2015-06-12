@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Daftar Pendidikan</h1>
-<%= link_to 'Buat Pendidikan Baru', new_pendidikan_path %>
+<%= link_to 'Buat Pendidikan Baru', new_pendidikan_path, class: "btn btn-primary" %>
 <table>
   <thead>
     <tr>
@@ -13,10 +13,11 @@
   <tbody>
     <% @pendidikans.each do |pendidikan| %>
       <tr>
-        <td><%= pendidikan.level_pend %></td>
-        <td><%= link_to 'Tampilkan', pendidikan %></td>
-        <td><%= link_to 'Edit', edit_pendidikan_path(pendidikan) %></td>
-        <td><%= link_to 'Hapus', pendidikan, method: :delete, data: { confirm: 'Anda yakin akan menghapus?' } %></td>
+        <td class="col-md-4"><%= pendidikan.level_pend %></td>
+        <td class="col-md-2"> <%= link_to 'Tampilkan', pendidikan, class: "btn btn-primary" %> </td>
+        <td class="col-md-2"> <%= link_to 'Edit', edit_pendidikan_path(pendidikan), class: "btn btn-primary" %> </td>
+        <td class="col-md-2"> <%= link_to 'Hapus', pendidikan, method: :delete,
+        data: { confirm: 'Anda yakin akan menghapus?' }, class: "btn btn-primary" %> </td>
       </tr>
     <% end %>
   </tbody>

@@ -46,22 +46,22 @@ ActiveRecord::Schema.define(version: 20150602121108) do
 
   create_table "profils", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "nama_lengkap",    null: false
-    t.string   "no_identitas",    null: false
+    t.string   "nama_lengkap",  null: false
+    t.string   "no_identitas",  null: false
     t.boolean  "jenis_kelamin"
-    t.text     "alamat",          null: false
-    t.string   "tempat_lahir",    null: false
-    t.datetime "tgl_lahir",       null: false
-    t.string   "no_hp",           null: false
-    t.integer  "pendididikan_id"
-    t.string   "nama_pend",       null: false
-    t.string   "jurusan",         null: false
+    t.text     "alamat",        null: false
+    t.string   "tempat_lahir",  null: false
+    t.datetime "tgl_lahir",     null: false
+    t.string   "no_hp",         null: false
+    t.integer  "pendidikan_id"
+    t.string   "nama_pend",     null: false
+    t.string   "jurusan",       null: false
     t.float    "nilai"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "profils", ["pendididikan_id"], name: "index_profils_on_pendididikan_id"
+  add_index "profils", ["pendidikan_id"], name: "index_profils_on_pendidikan_id"
   add_index "profils", ["user_id"], name: "index_profils_on_user_id"
 
   create_table "users", force: :cascade do |t|

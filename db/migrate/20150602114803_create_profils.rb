@@ -9,7 +9,7 @@ class CreateProfils < ActiveRecord::Migration
       t.string :tempat_lahir, null: false
       t.datetime :tgl_lahir, null: false
       t.string :no_hp, null: false
-      t.references :pendididikan, index: true
+      t.references :pendidikan, index: true
       t.string :nama_pend, null: false
       t.string :jurusan, null: false
       t.float :nilai
@@ -17,6 +17,6 @@ class CreateProfils < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_foreign_key :profils, :users
-    add_foreign_key :profils, :pendididikans
+    add_foreign_key :profils, :pendidikans
   end
 end
