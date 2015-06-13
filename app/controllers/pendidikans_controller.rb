@@ -1,5 +1,6 @@
 class PendidikansController < ApplicationController
-  before_action :set_pendidikan, :admin_user, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user
+  before_action :set_pendidikan, only: [:show, :edit, :update, :destroy]
 
   # GET /pendidikans
   # GET /pendidikans.json
@@ -73,6 +74,7 @@ class PendidikansController < ApplicationController
     end
     
     def admin_user
+      authenticate_user!
       redirect_to(root_url) unless current_user.admin?
     end
 end

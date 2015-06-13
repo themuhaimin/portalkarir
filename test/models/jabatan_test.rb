@@ -2,7 +2,6 @@ require 'test_helper'
 
 class JabatanTest < ActiveSupport::TestCase
   
-  
   def setup
   @jabatan = Jabatan.new(nama_jabatan: "Contoh_Jabatan")
   end

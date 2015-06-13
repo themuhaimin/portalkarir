@@ -1,0 +1,2 @@
+class LowongansController < ApplicationController
+end

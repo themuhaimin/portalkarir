@@ -1,6 +1,7 @@
 class ProfilsController < ApplicationController
-   before_action :current_user, only: [:new, :create, :edit, :show, :update, :destroy]
-   
+  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_or_correct_user, only: :show
+  
   def new
     @user = User.find(params[:user_id])
     @profil = @user.build_profil
@@ -50,7 +51,15 @@ class ProfilsController < ApplicationController
             :jurusan, :nilai)
     end
     
-    def cek_profil_ada
-      redirect_to new_user_profil_path(current_user) unless current_user.profil
+    def correct_user
+      authenticate_user!
+      @user = User.find(params[:user_id])
+      redirect_to user_profil_path(current_user) if current_user.id!=@user.id
+    end
+    
+    def admin_or_correct_user
+      authenticate_user!
+      @user = User.find(params[:user_id])
+      redirect_to(root_url) unless (current_user.id!=@user.id || current_user.admin?)
     end
 end

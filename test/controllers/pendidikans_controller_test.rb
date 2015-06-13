@@ -1,14 +1,17 @@
 require 'test_helper'
 
 class PendidikansControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
-    @pendidikan = pendidikans(:S1)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:pendidikans)
+    @user = users(:admin)
+    @user.skip_confirmation!
+    @user.save!
+    @user2 = users(:pelamar)
+    @user2.skip_confirmation!
+    @user2.save!
+    @pendidikan = pendidikans(:SMK)
+    sign_in @user
   end
 
   test "should get new" do
@@ -46,4 +49,19 @@ class PendidikansControllerTest < ActionController::TestCase
 
     assert_redirected_to pendidikans_path
   end
+  
+  test "harus di redirect_to login jika belum login" do
+    sign_out @user
+    get :index
+    assert_not flash.empty?
+    assert_redirected_to new_user_session_path
+  end
+  
+  test "harus di redirect_to beranda jika bukan admin" do
+    sign_out @user
+    sign_in @user2
+    get :index
+    assert_redirected_to root_url
+  end
+  
 end

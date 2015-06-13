@@ -1,2 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+pelamar:
+  user: pelamar
+  nama_lengkap: 'Pelamar satu'
+  no_identitas: '111111111'
+  jenis_kelamin: true
+  alamat: 'Jl. aaaaaa'
+  tempat_lahir: 'Jakarta'
+  tgl_lahir: <%= Time.zone.now %>
+  no_hp: '085555555'
+  pendidikan: SMK
+  nama_pend: 'aaaaaaa'
+  jurusan: 'aaaaaa'
+  nilai: 8.8
+  
+lain:
+  user: lain
+  nama_lengkap: 'Pelamar lain'
+  no_identitas: '111111111'
+  jenis_kelamin: true
+  alamat: 'Jl. aaaaaa'
+  tempat_lahir: 'Jakarta'
+  tgl_lahir: <%= Time.zone.now %>
+  no_hp: '085555555'
+  pendidikan: S2
+  nama_pend: 'aaaaaaa'
+  jurusan: 'aaaaaa'
+  nilai: 8.8
