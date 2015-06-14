@@ -1,0 +1,27 @@
+<% provide(:title, "Daftar Pengumuman") %>
+<h1>Daftar Pengumuman</h1>
+<% if current_user.try(:admin?) %>
+<%= link_to 'Buat Pengumuman Baru', new_pengumumann_path, class: "btn btn-primary" %>
+<% end %>
+<%= will_paginate  %>
+<table>
+  <thead>
+  </thead>
+  <tbody>
+    <% @pengumumanns.each do |pengumumann| %>
+      <tr>
+        <td class="col-md-4"><%= pengumumann.judul %> </br>
+        <%= pengumumann.deskripsi %>
+        </td>
+        <td class="col-md-2"> <%= link_to 'Lihat', pengumumann, class: "btn btn-primary" %> </td>
+        <% if current_user.try(:admin?) %>
+        <td class="col-md-2"> <%= link_to 'Edit', edit_pengumumann_path(pengumumann), class: "btn btn-primary" %> </td>
+        <td class="col-md-2"> <%= link_to 'Hapus', pengumumann, method: :delete,
+        data: { confirm: 'Anda yakin akan menghapus?' }, class: "btn btn-primary" %> </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate  %>
+<br>

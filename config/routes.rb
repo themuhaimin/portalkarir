@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pengumumanns
   resources :lowongans
   resources :pendidikans
   resources :jabatans

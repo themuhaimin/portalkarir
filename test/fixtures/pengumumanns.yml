@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+satu:
+  judul: 'Pengumuman1'
+  deskripsi: 'Deskripsi Pengumuman3'
+  tanggal: <%= 2.day.from_now.localtime %>
+  tempat: 'CARfix Semarang'
+  waktu: <%= 2.day.from_now.localtime %>
+  kelengkapan: 'berpakaian rapi'
+
+dua:
+  judul: 'Pengumuman2'
+  deskripsi: 'Deskripsi Pengumuman2'
+

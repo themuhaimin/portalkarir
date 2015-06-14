@@ -1,0 +1,26 @@
+<% provide(:title, "Detail Pengumuman") %>
+<p>
+  <strong>Detail Pengumuman</strong></br>
+  <strong><%= @pengumumann.judul %></strong></br>
+  <%= @pengumumann.deskripsi %></br></br>
+  
+  <% if @pengumumann.tanggal.present? %>
+  Tanggal :<%= @pengumumann.tanggal.strftime("%v") %></br>
+  <% end %>
+  
+  <% if @pengumumann.tempat.present? %>
+  Tempat :<%= @pengumumann.tempat %></br>
+  <% end %>
+  
+  <% if @pengumumann.waktu.present? %>
+  Waktu :<%= @pengumumann.waktu.strftime("%H:%M") %></br>
+  <% end %>
+  
+  <% if @pengumumann.kelengkapan.present? %>
+  Kelengkapan :</br><%= @pengumumann.kelengkapan %></br>
+  <% end %>
+</p>
+<% if current_user.try(:admin?) %>
+<%= link_to 'Edit', edit_pengumumann_path(@pengumumann), class: "btn btn-primary" %> 
+<% end %>
+

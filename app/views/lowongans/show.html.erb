@@ -1,6 +1,7 @@
+<% provide(:title, "Detail Lowongan") %>
 <p>
   <strong>Detail Lowongan</strong></br>
-  <strong></strong><%= @lowongan.jabatan.nama_jabatan %></strong></br>
+  <strong><%= @lowongan.jabatan.nama_jabatan %></strong></br>
   Pendidikan minimal :<%= @lowongan.pendidikan.level_pend %></br>
   Usia Maksimal :<%= @lowongan.limit_umur %></br>
   Keterangan Umum :</br><%= @lowongan.ket_umum %></br>

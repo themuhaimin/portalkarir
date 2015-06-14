@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
-
+<% provide(:title, "Daftar Lowongan") %>
 <h1>Daftar Lowongan</h1>
 <% if current_user.try(:admin?) %>
 <%= link_to 'Buat Lowongan Baru', new_lowongan_path, class: "btn btn-primary" %>
 <% end %>
+<%= will_paginate  %>
 <table>
   <thead>
     <tr>
@@ -28,5 +28,5 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate  %>
 <br>

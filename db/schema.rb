@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602121108) do
+ActiveRecord::Schema.define(version: 20150614090855) do
 
   create_table "jabatans", force: :cascade do |t|
     t.string   "nama_jabatan", default: "", null: false
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20150602121108) do
   end
 
   add_index "pendidikans", ["level_pend"], name: "index_pendidikans_on_level_pend", unique: true
+
+  create_table "pengumumanns", force: :cascade do |t|
+    t.string   "judul",       null: false
+    t.text     "deskripsi",   null: false
+    t.datetime "tanggal"
+    t.string   "tempat"
+    t.datetime "waktu"
+    t.text     "kelengkapan"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "profils", force: :cascade do |t|
     t.integer  "user_id"
