@@ -2,21 +2,21 @@
 <h1>Buat Profil Anda</h1>
 
 <%= form_for [@user, @profil], :url => user_profil_path(@user) do |f| %>
-    <%= f.label :nama_lengkap %><%= f.text_field :nama_lengkap, placeholder: "Nama lengkap Sesuai KTP/Paspor" %><br/>
-    <%= f.label :no_identitas %><%= f.text_field :no_identitas, placeholder: "No. KTP / SIM " %><br/>
-    <%= f.label :jenis_kelamin %> <%= f.radio_button :jenis_kelamin, false, :value => false %>
+    <%= f.label :nama_lengkap %><br/><%= f.text_field :nama_lengkap, placeholder: "Nama lengkap Sesuai KTP/Paspor" %><br/>
+    <%= f.label :no_identitas %><br/><%= f.text_field :no_identitas, placeholder: "No. KTP / SIM " %><br/>
+    <%= f.label :jenis_kelamin %><br/> <%= f.radio_button :jenis_kelamin, false, :value => false %>
                                   <%= label :jenis_kelamin, "Laki-laki       " %>
                                   <%= f.radio_button :jenis_kelamin, true, :value => true %>
                                   <%= label :jenis_kelamin, "Perempuan"%><br/>
-    <%= f.label :alamat %> <%= f.text_area :alamat, placeholder: "Alamat sesuai KTP/SIM" %><br/>
-    <%= f.label :no_hp %> <%= f.text_field :no_hp %><br/>
-    <%= f.label :tempat_lahir %> <%= f.text_field :tempat_lahir, placeholder: "Kota tempat kelahiran " %><br/>
-    <%= f.label :tgl_lahir %> <%= f.date_select :tgl_lahir %><br/>
-    <%= f.label :pendidikan_id, "Pendidikan Terakhir" %> <%= f.collection_select :pendidikan_id, 
+    <%= f.label :alamat %><br/> <%= f.text_area :alamat, placeholder: "Alamat sesuai KTP/SIM" %><br/>
+    <%= f.label :no_hp, "No. Telepon/HP" %><br/> <%= f.text_field :no_hp %><br/>
+    <%= f.label :tempat_lahir, "Kota Kelahiran" %><br/> <%= f.text_field :tempat_lahir, placeholder: "Kota tempat kelahiran " %><br/>
+    <%= f.label :tgl_lahir %> <%= f.date_select :tgl_lahir, :start_year => Time.now.year - 50, :end_year => Time.now.year  %><br/>
+    <%= f.label :pendidikan_id, "Pendidikan Terakhir" %><br/> <%= f.collection_select :pendidikan_id, 
                                         Pendidikan.order(:level_pend),:id,:level_pend, include_blank: true  %><br/>
-    <%= f.label :nama_pend  %> <%= f.text_field :nama_pend, placeholder: "Nama Sekolah/Universitas"%><br/>
-    <%= f.label :jurusan %> <%= f.text_field :jurusan %><br/>
-    <%= f.label :nilai %> <%= f.text_field :nilai, placeholder: "Nilai UAN atau IPK" %><br/>
+    <%= f.label :nama_pend, "Nama Institusi Pendidikan"  %><br/> <%= f.text_field :nama_pend, placeholder: "Nama Sekolah/Universitas"%><br/>
+    <%= f.label :jurusan %><br/> <%= f.text_field :jurusan %><br/>
+    <%= f.label :nilai, "Nilai IPK/UAN" %><br/> <%= f.text_field :nilai, placeholder: "Nilai UAN atau IPK" %><br/>
   <div class="actions">
     <%= f.submit "Simpan", class: "btn btn-primary" %>
   </div>

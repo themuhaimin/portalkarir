@@ -1,2 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+satu:
+  jabatan: mekanik
+  pendidikan: SMK
+  limit_umur: 25
+  ket_umum: 'SMK Otomotif, Fresh Graduates'
+  deskripsi: 'Sebagai seorang Mekanik, Anda akan bertugas di bengkel CARfix'
+  posted: true
+  max_tgl: <%= 2.day.from_now.localtime %>
+
+dua:
+  jabatan: sales
+  pendidikan: S1
+  limit_umur: 35
+  ket_umum: 'Berpengalaman sebagai Marketing dan Customer Retention'
+  deskripsi: 'Anda akan bertugas mempromosikan brand CARfix'
+  posted: false
+  max_tgl: <%= 12.day.from_now.localtime %>

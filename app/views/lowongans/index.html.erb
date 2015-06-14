@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Daftar Lowongan</h1>
+<% if current_user.try(:admin?) %>
+<%= link_to 'Buat Lowongan Baru', new_lowongan_path, class: "btn btn-primary" %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Lowongan yang ada</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lowongans.each do |lowongan| %>
+      <tr>
+        <td class="col-md-4"><%= lowongan.jabatan.nama_jabatan %> </br>
+        Pend. min <%= lowongan.pendidikan.level_pend %> ,Usia maks. <%= lowongan.limit_umur %> tahun
+        </td>
+        <td class="col-md-2"> <%= link_to 'Lihat', lowongan, class: "btn btn-primary" %> </td>
+        <% if current_user.try(:admin?) %>
+        <td class="col-md-2"> <%= link_to 'Edit', edit_lowongan_path(lowongan), class: "btn btn-primary" %> </td>
+        <td class="col-md-2"> <%= link_to 'Hapus', lowongan, method: :delete,
+        data: { confirm: 'Anda yakin akan menghapus?' }, class: "btn btn-primary" %> </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

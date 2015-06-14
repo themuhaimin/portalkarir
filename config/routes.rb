@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lowongans
   resources :pendidikans
   resources :jabatans
   devise_for :users

@@ -1,0 +1,17 @@
+<%= form_for(@lowongan) do |f| %>
+
+  <div class="field">
+    <%= f.label :jabatan_id, "Lowongan untuk Posisi" %><br/> <%= f.collection_select :jabatan_id, 
+                                        Jabatan.order(:nama_jabatan),:id,:nama_jabatan, include_blank: true  %><br/>
+    <%= f.label :pendidikan_id, "Pendidikan Minimal" %><br/> <%= f.collection_select :pendidikan_id, 
+                                        Pendidikan.order(:level_pend),:id,:level_pend, include_blank: true  %><br/>
+    <%= f.label :limit_umur, "Batas Usia" %><br/><%= f.number_field :limit_umur, in: 20..40 %> tahun<br/>
+    <%= f.label :ket_umum, "Keterangan Umum" %><br/><%= f.text_area :ket_umum %><br/>
+    <%= f.label :deskripsi, "Deskripsi Pekerjaan" %><br/><%= f.text_area :deskripsi %><br/>
+    <%= f.label :max_tgl, "Tanggal Terakhir Melamar" %><br/> <%= f.date_select :max_tgl,:start_year => Time.now.year, :end_year => Time.now.year + 5  %><br/>
+    <%= f.check_box :posted %><%= f.label :posted, "Posting" %><br/> 
+  </div>
+  <div class="actions">
+    <%= f.submit "Simpan", class: "btn btn-primary" %>
+  </div>
+<% end %>
