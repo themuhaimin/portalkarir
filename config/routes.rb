@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lamarans, only: :create
   resources :pengumumanns
   resources :lowongans
   resources :pendidikans
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     resource :profil 
     member do 
-     get :set_admin, :as => :setter_admin_for 
+     get :set_admin, :as => :setter_admin_for
     end
   end
   

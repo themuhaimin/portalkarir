@@ -48,10 +48,10 @@ class ProfilsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
-  test "should redirect_to beranda if not admin_or_correct_user" do
+  test "should redirect_to profil sendiri if not admin_or_correct_user" do
     sign_out @user
     sign_in @user2
     get :show, :user_id => @user.id
-    assert_response :success
+    assert_redirected_to user_profil_path(@user2)
   end
 end

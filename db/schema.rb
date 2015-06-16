@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614090855) do
+ActiveRecord::Schema.define(version: 20150614131402) do
 
   create_table "jabatans", force: :cascade do |t|
     t.string   "nama_jabatan", default: "", null: false
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20150614090855) do
   end
 
   add_index "jabatans", ["nama_jabatan"], name: "index_jabatans_on_nama_jabatan", unique: true
+
+  create_table "lamarans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "lowongan_id"
+    t.boolean  "dipanggil"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "lamarans", ["lowongan_id"], name: "index_lamarans_on_lowongan_id"
+  add_index "lamarans", ["user_id", "lowongan_id"], name: "index_lamarans_on_user_id_and_lowongan_id", unique: true
+  add_index "lamarans", ["user_id"], name: "index_lamarans_on_user_id"
 
   create_table "lowongans", force: :cascade do |t|
     t.integer  "jabatan_id"

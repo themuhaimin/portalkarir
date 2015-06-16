@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   validates :nama,  presence: true, length: { maximum: 15 }
   has_one :profil, dependent: :destroy
   accepts_nested_attributes_for :profil
+  has_many :lamarans, dependent: :destroy
+  accepts_nested_attributes_for :lamarans
 end

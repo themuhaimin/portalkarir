@@ -18,6 +18,7 @@ before_action :admin_user,  only: [:index, :set_admin, :destroy ]
       flash[:success] = "User dijadikan admin"
       redirect_to users_url
   end
+
     
   private
     def admin_user

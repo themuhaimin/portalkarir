@@ -7,6 +7,8 @@ class LowongansController < ApplicationController
   
   def show
     @lowongan = Lowongan.find(params[:id])
+    @lamaran = @lowongan.lamarans.build
+    @pelamars = @lowongan.lamarans.paginate(page: params[:page],:per_page => 5)
   end
   
   def new

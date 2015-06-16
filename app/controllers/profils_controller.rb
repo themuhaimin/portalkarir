@@ -60,6 +60,8 @@ class ProfilsController < ApplicationController
     def admin_or_correct_user
       authenticate_user!
       @user = User.find(params[:user_id])
-      redirect_to(root_url) unless (current_user.id!=@user.id || current_user.admin?)
+      if current_user.id!=@user.id
+          redirect_to user_profil_path(current_user) unless current_user.admin?
+      end
     end
 end

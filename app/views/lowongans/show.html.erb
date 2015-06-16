@@ -9,8 +9,25 @@
   Dibuka s.d tanggal :<%= @lowongan.max_tgl.strftime("%v") %></br>
 </p>
 <% if current_user.try(:admin?) %>
-<%= link_to 'Edit', edit_lowongan_path(@lowongan), class: "btn btn-primary" %> 
+<%= link_to 'Edit', edit_lowongan_path(@lowongan), class: "btn btn-primary" %>
+</br>
+</br>
+<strong>Daftar Pelamar</strong></br>
+<ul class="users">
+  <% @pelamars.each do |pelamar| %>
+    <% if !pelamar.nil? %>
+    <li><%= link_to pelamar.user.nama, user_profil_path(:user_id => pelamar.user.id) %> </li>
+  <% end %>
+  <% end %>
+</ul>
+<%= will_paginate @pelamars %>
+<% elsif user_signed_in? %>
+  <%= form_for @lamaran do |f| %>
+  <div><%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :lowongan_id, @lowongan.id %></div>
+  <%= f.submit "Lamar", class: "btn btn-primary" %>
+  <% end %>
 <% else %>
-<%= link_to 'Lamar', '#', class: "btn btn-primary" %> 
+Silakan <%= link_to "Login", new_user_session_path %> untuk bisa melamar lowongan
 <% end %>
 
