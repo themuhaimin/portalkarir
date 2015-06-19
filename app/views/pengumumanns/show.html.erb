@@ -5,22 +5,63 @@
   <%= @pengumumann.deskripsi %></br></br>
   
   <% if @pengumumann.tanggal.present? %>
-  Tanggal :<%= @pengumumann.tanggal.strftime("%v") %></br>
+  &emsp;Tanggal :<%= @pengumumann.tanggal.strftime("%v") %></br>
   <% end %>
   
   <% if @pengumumann.tempat.present? %>
-  Tempat :<%= @pengumumann.tempat %></br>
+  &emsp;Tempat : <%= @pengumumann.tempat %></br>
   <% end %>
   
-  <% if @pengumumann.waktu.present? %>
-  Waktu :<%= @pengumumann.waktu.strftime("%H:%M") %></br>
+  <% if @pengumumann.waktu != "0001-01-01 00:00:00" %>
+  &emsp;Waktu : <%= @pengumumann.waktu.strftime("%H:%M") %> </br>
   <% end %>
   
   <% if @pengumumann.kelengkapan.present? %>
-  Kelengkapan :</br><%= @pengumumann.kelengkapan %></br>
+  Kelengkapan :</br>&emsp;<%= @pengumumann.kelengkapan %></br>
   <% end %>
 </p>
 <% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_pengumumann_path(@pengumumann), class: "btn btn-primary" %> 
+</br>
+</br>
+<strong>Daftar Nama</strong></br>
+<ul class="terpanggil">
+  <% @terpanggil.each do |terpanggil| %>
+    <% if !terpanggil.nil? %>
+    <li><%= link_to terpanggil.lamaran.user.nama, user_profil_path(:user_id => terpanggil.lamaran.user.id) %> 
+    | <%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %>
+    &emsp; <%= link_to "Hapus Nama", terpanggil, method: :delete,
+    data: { confirm: "Anda yakin menghapus?" }, class: "btn btn-primary" %>
+    </li>
+  <% end %>
+  <% end %>
+</ul>
+<strong>Tambahkan Nama</strong></br>
+  <%= form_for @panggilan do |f| %>
+  <div class="field">
+    Pilih Pelamar yang akan dipanggil :
+  <%= f.collection_select :lamaran_id, @lamarans.collect{|x|OpenStruct.new(:lamaran_id => x.id, :desc => "#{x.user.nama} -- #{x.lowongan.jabatan.nama_jabatan}") },
+  :lamaran_id, :desc, include_blank: true  %>
+  <%= f.hidden_field :pengumumann_id, :value => @pengumumann.id %>
+  </div>
+  <div class="actions">
+  <%= f.submit "Tambahkan ke Daftar", class: "btn btn-primary" %>
+  </div>
+  <% end %> 
+<% else %>
+  <% if @terpanggil.first.present? %>
+  <strong>Daftar Nama</strong></br>
+  <ul class="terpanggil">
+  <% @terpanggil.each do |terpanggil| %>
+    <% if !terpanggil.nil? %>
+    <li><%= terpanggil.lamaran.user.nama %> 
+    | <%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <% end %>
 <% end %>
+</br></br><%= link_to 'Kembali ke Daftar Pengumuman', pengumumanns_path, class: "btn btn-primary" %>
+
 

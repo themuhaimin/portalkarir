@@ -1,5 +1,10 @@
 class LamaransController < ApplicationController
   before_action :authenticate_user!, only: :create
+  before_action :admin_user, only: :index
+  
+  def index
+    @lamarans = Lamaran.paginate(page: params[:page],:per_page => 10)
+  end
   
   def create
     @user = User.find(params[:user_id])
@@ -24,6 +29,10 @@ class LamaransController < ApplicationController
   
   private
     def lamaran_params
-      params.permit(:user_id,:lowongan_id)
+      params.permit(:user_id,:lowongan_id,:dipanggil)
+    end
+    
+    def admin_user
+      redirect_to(root_path) unless current_user.try(:admin?)
     end
 end

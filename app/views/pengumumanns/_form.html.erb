@@ -3,7 +3,7 @@
   <div class="field">
     <%= f.label :judul, "Judul Pengumuman" %><br/><%= f.text_field :judul %> <br/>
     <%= f.label :deskripsi, "Isi Pengumuman" %><br/><%= f.text_area :deskripsi %><br/>
-    <%= f.label :tanggal, "Tanggal" %><br/> <%= f.date_select :tanggal,{:include_blank => true, :default => nil}, :start_year => Time.now.year, :end_year => Time.now.year + 5  %><br/>
+    <%= f.label :tanggal, "Tanggal" %><br/> <%= f.date_select :tanggal,{:include_blank => true, :default => nil, :start_year => Date.today.year}  %><br/>
     <%= f.label :tempat, "Tempat" %><br/><%= f.text_field :tempat %> <br/> 
     <%= f.label :waktu, "Waktu" %><br/><%= f.time_select :waktu,{:include_blank => true, :default => nil} %> <br/> 
     <%= f.label :kelengkapan, "Kelengkapan yang harus dibawa" %><br/><%= f.text_area :kelengkapan %><br/>

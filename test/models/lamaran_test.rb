@@ -18,4 +18,11 @@ class LamaranTest < ActiveSupport::TestCase
     @lamaran.lowongan_id = nil
     assert_not @lamaran.valid?
   end
+  
+  test "should unique pair user_id and lowongan_id" do
+    duplicate_lamaran = @lamaran.dup
+    @lamaran.save
+    assert_not duplicate_lamaran.valid?
+  end
+  
 end

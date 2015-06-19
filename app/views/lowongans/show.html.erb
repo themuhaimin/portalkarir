@@ -4,8 +4,8 @@
   <strong><%= @lowongan.jabatan.nama_jabatan %></strong></br>
   Pendidikan minimal :<%= @lowongan.pendidikan.level_pend %></br>
   Usia Maksimal :<%= @lowongan.limit_umur %></br>
-  Keterangan Umum :</br><%= @lowongan.ket_umum %></br>
-  Deskripsi Pekerjaan :</br><%= @lowongan.deskripsi %></br>
+  Keterangan Umum :</br>&emsp;<%= @lowongan.ket_umum %></br>
+  Deskripsi Pekerjaan :</br>&emsp;<%= @lowongan.deskripsi %></br>
   Dibuka s.d tanggal :<%= @lowongan.max_tgl.strftime("%v") %></br>
 </p>
 <% if current_user.try(:admin?) %>
@@ -24,10 +24,11 @@
 <% elsif user_signed_in? %>
   <%= form_for @lamaran do |f| %>
   <div><%= hidden_field_tag :user_id, current_user.id %>
-  <%= hidden_field_tag :lowongan_id, @lowongan.id %></div>
+  <%= hidden_field_tag :lowongan_id, @lowongan.id %>
+  <%= hidden_field_tag :dipanggil, false %></div>
   <%= f.submit "Lamar", class: "btn btn-primary" %>
   <% end %>
 <% else %>
 Silakan <%= link_to "Login", new_user_session_path %> untuk bisa melamar lowongan
 <% end %>
-
+</br></br><%= link_to 'Kembali ke Daftar Lowongan', lowongans_path, class: "btn btn-primary" %>

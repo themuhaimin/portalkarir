@@ -7,6 +7,9 @@ class PengumumannsController < ApplicationController
   
   def show
     @pengumumann = Pengumumann.find(params[:id])
+    @panggilan = Panggilan.new
+    @terpanggil = @pengumumann.panggilans
+    @lamarans = Lamaran.where.not(dipanggil: true).order(created_at: :desc)
   end
   
   def new

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614131402) do
+ActiveRecord::Schema.define(version: 20150618030441) do
 
   create_table "jabatans", force: :cascade do |t|
     t.string   "nama_jabatan", default: "", null: false
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20150614131402) do
 
   add_index "lowongans", ["jabatan_id"], name: "index_lowongans_on_jabatan_id"
   add_index "lowongans", ["pendidikan_id"], name: "index_lowongans_on_pendidikan_id"
+
+  create_table "panggilans", force: :cascade do |t|
+    t.integer  "pengumumann_id"
+    t.integer  "lamaran_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "panggilans", ["lamaran_id", "pengumumann_id"], name: "index_panggilans_on_lamaran_id_and_pengumumann_id", unique: true
+  add_index "panggilans", ["lamaran_id"], name: "index_panggilans_on_lamaran_id"
+  add_index "panggilans", ["pengumumann_id"], name: "index_panggilans_on_pengumumann_id"
 
   create_table "pendidikans", force: :cascade do |t|
     t.string   "level_pend"

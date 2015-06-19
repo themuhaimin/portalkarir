@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :lamarans, only: :create
-  resources :pengumumanns
+  resources :lamarans, only: [:create, :index]
+  resources :panggilans, only: [:create, :destroy]
+  resources :pengumumanns 
   resources :lowongans
   resources :pendidikans
   resources :jabatans
