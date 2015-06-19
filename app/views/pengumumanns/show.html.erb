@@ -1,41 +1,55 @@
 <% provide(:title, "Detail Pengumuman") %>
-<p>
-  <strong>Detail Pengumuman</strong></br>
-  <strong><%= @pengumumann.judul %></strong></br>
-  <%= @pengumumann.deskripsi %></br></br>
+<table class="table table-hover">
+  <thead>
+    <th colspan="2"><h2></h2><%= @pengumumann.judul %></h2></th>
+  </thead>
+  <tbody>
+  <tr><td colspan="2"><%= simple_format( @pengumumann.deskripsi) %></td></tr>
   
   <% if @pengumumann.tanggal.present? %>
-  &emsp;Tanggal :<%= @pengumumann.tanggal.strftime("%v") %></br>
+  <tr><td>Tanggal</td>
+  <td>: <%= @pengumumann.tanggal.strftime("%v") %></td></tr>
   <% end %>
   
   <% if @pengumumann.tempat.present? %>
-  &emsp;Tempat : <%= @pengumumann.tempat %></br>
+  <tr><td>Tempat</td>
+  <td>: <%= @pengumumann.tempat %></td></tr>
   <% end %>
   
   <% if @pengumumann.waktu != "0001-01-01 00:00:00" %>
-  &emsp;Waktu : <%= @pengumumann.waktu.strftime("%H:%M") %> </br>
+  <tr><td>Tempat</td>
+  <td>: <%= @pengumumann.waktu.strftime("%H:%M") %></td></tr>
   <% end %>
   
   <% if @pengumumann.kelengkapan.present? %>
-  Kelengkapan :</br>&emsp;<%= @pengumumann.kelengkapan %></br>
+  <tr><td>Kelengkapan</td>
+  <td>:<%= simple_format(@pengumumann.kelengkapan) %></td></tr>
   <% end %>
-</p>
+  </tbody>
+</table>
+
 <% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_pengumumann_path(@pengumumann), class: "btn btn-primary" %> 
-</br>
-</br>
-<strong>Daftar Nama</strong></br>
-<ul class="terpanggil">
+<br/>
+<table class="table table-hover">
+  <thead>
+    <th colspan="3">Daftar Nama</th>
+  </thead>
+  <tbody>
   <% @terpanggil.each do |terpanggil| %>
     <% if !terpanggil.nil? %>
-    <li><%= link_to terpanggil.lamaran.user.nama, user_profil_path(:user_id => terpanggil.lamaran.user.id) %> 
-    | <%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %>
-    &emsp; <%= link_to "Hapus Nama", terpanggil, method: :delete,
+    <tr><td><%= link_to terpanggil.lamaran.user.nama, 
+    user_profil_path(:user_id => terpanggil.lamaran.user.id) %></td>
+    <td><%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %></td>
+    <td><%= link_to "Hapus Nama", terpanggil, method: :delete,
     data: { confirm: "Anda yakin menghapus?" }, class: "btn btn-primary" %>
-    </li>
+    </td></tr>
   <% end %>
   <% end %>
-</ul>
+  </tbody>
+</table>
+<br/>
+
 <strong>Tambahkan Nama</strong></br>
   <%= form_for @panggilan do |f| %>
   <div class="field">
@@ -50,18 +64,22 @@
   <% end %> 
 <% else %>
   <% if @terpanggil.first.present? %>
-  <strong>Daftar Nama</strong></br>
-  <ul class="terpanggil">
+  <table class="table table-hover">
+  <thead>
+    <th colspan="2">Daftar Nama</th>
+  </thead>
+  <tbody>
   <% @terpanggil.each do |terpanggil| %>
     <% if !terpanggil.nil? %>
-    <li><%= terpanggil.lamaran.user.nama %> 
-    | <%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %>
-    </li>
+    <tr><td><%= terpanggil.lamaran.user.nama %></td>
+    <td><%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %></td></tr>
     <% end %>
-  </ul>
+  <tbody>
+</table>
+<br/>
   <% end %>
   <% end %>
 <% end %>
-</br></br><%= link_to 'Kembali ke Daftar Pengumuman', pengumumanns_path, class: "btn btn-primary" %>
+<%= link_to 'Kembali ke Daftar Pengumuman', pengumumanns_path, class: "btn btn-primary" %>
 
 

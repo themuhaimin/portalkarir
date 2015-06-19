@@ -4,8 +4,8 @@
   <strong><%= @lowongan.jabatan.nama_jabatan %></strong></br>
   Pendidikan minimal :<%= @lowongan.pendidikan.level_pend %></br>
   Usia Maksimal :<%= @lowongan.limit_umur %></br>
-  Keterangan Umum :</br>&emsp;<%= @lowongan.ket_umum %></br>
-  Deskripsi Pekerjaan :</br>&emsp;<%= @lowongan.deskripsi %></br>
+  Keterangan Umum :</br><%= simple_format(@lowongan.ket_umum) %></br>
+  Deskripsi Pekerjaan :</br><%= simple_format(@lowongan.deskripsi) %></br>
   Dibuka s.d tanggal :<%= @lowongan.max_tgl.strftime("%v") %></br>
 </p>
 <% if current_user.try(:admin?) %>

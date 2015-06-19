@@ -1,17 +1,25 @@
 <% provide(:title, 'Daftar Lamaran') %>
 <h1>Daftar Lamaran</h1>
-
-<%= will_paginate  @lamarans %>
-
-<ul class="lamarans">
+<%= will_paginate  %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nama Pelamar</th>
+      <th>Lowongan yang dilamar</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+<tbody>
   <% @lamarans.each do |a| %>
-    <span><%= link_to a.user.nama, user_profil_path(:user_id => a.user.id) %> 
-     | <%= a.lowongan.jabatan.nama_jabatan %>
-      | <% if a.dipanggil? %>Sudah dipanggil
+  <tr>
+    <td><%= link_to a.user.nama, user_profil_path(:user_id => a.user.id) %></td>
+    <td><%= a.lowongan.jabatan.nama_jabatan %></td>
+    <td><% if a.dipanggil? %>Sudah dipanggil
                     <% else %>Belum dipanggil
-                    <% end %>
-    </span></br>
+                    <% end %></td>
+  <tr>
   <% end %>
-</ul>
+<%= will_paginate  %>
+</tbody>
+</table>
 
-<%= will_paginate @lamarans %>

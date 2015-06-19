@@ -3,25 +3,40 @@
 <h2><%= @user.email %></h2>
 
 <% if @profil.nil? && current_user.id!=@user.id %>
-  Belum Ada Profil
+  <strong>Belum Ada Profil</strong>
 <% elsif @profil.nil? %>
   <%= link_to "Buat Profil", new_user_profil_path(@user), class: "btn btn-primary" %>
 <% else %>
-<div>
-    Nama Lengkap        : <%= @profil.nama_lengkap %><br/>
-    No. Identitas       : <%= @profil.no_identitas %><br/>
-    Jenis Kelamin       : <% if @profil.jenis_kelamin? %>Perempuan
+<table class="table table-hover">
+  <thead>  </thead>
+  <tbody>
+    <tr><td class="col-md-3">Nama Lengkap </td>
+    <td class="col-md-7">: <%= @profil.nama_lengkap %></td></tr>
+    <tr><td class="col-md-3">No. Identitas</td> 
+    <td class="col-md-7">: <%= @profil.no_identitas %></td></tr>
+    <tr><td class="col-md-3">Jenis Kelamin </td>
+    <td class="col-md-7">: <% if @profil.jenis_kelamin? %>Perempuan
                     <% else %>Laki-laki
                     <% end %>
-                    <br/>
-    Alamat              : <%= @profil.alamat %><br/>
-    Tempat Lahir        : <%= @profil.tempat_lahir %><br/>
-    Tanggal Lahir       : <%= @profil.tgl_lahir.strftime("%v") %><br/>
-    Pendidikan Terakhir : <%= @profil.pendidikan.level_pend %><br/>
-    Sekolah/Universitas : <%= @profil.nama_pend %><br/>
-    Jurusan             : <%= @profil.jurusan %><br/>
-    Nilai               : <%= @profil.nilai %><br/>
-</div>
+                    </td></tr>
+    <tr><td class="col-md-3">Alamat     </td>         
+    <td class="col-md-7">: <%= @profil.alamat %></td></tr>
+    <tr><td class="col-md-3">No. Telp/HP     </td>         
+    <td class="col-md-7">: <%= @profil.no_hp %></td></tr>
+    <tr><td class="col-md-3">Tempat Lahir        </td>
+    <td class="col-md-7">: <%= @profil.tempat_lahir %></td></tr>
+    <tr><td class="col-md-3">Tanggal Lahir       </td>
+    <td class="col-md-7">: <%= @profil.tgl_lahir.strftime("%v") %></td></tr>
+    <tr><td class="col-md-3">Pendidikan Terakhir </td>
+    <td class="col-md-7">: <%= @profil.pendidikan.level_pend %></td></tr>
+    <tr><td class="col-md-3">Sekolah/Universitas </td>
+    <td class="col-md-7">: <%= @profil.nama_pend %></td></tr>
+    <tr><td class="col-md-3">Jurusan             </td>
+    <td class="col-md-7">: <%= @profil.jurusan %></td></tr>
+    <tr><td class="col-md-3">Nilai               </td>
+    <td class="col-md-7">: <%= @profil.nilai %></td></tr>
+  </tbody>
+</table>
   
   <% unless current_user.id!=@user.id %>
      <%= link_to "Edit", edit_user_profil_path(current_user), class: "btn btn-primary" %>

@@ -31,6 +31,9 @@ class PengumumannsController < ApplicationController
   
   def update
     @pengumumann = Pengumumann.find(params[:id])
+    @panggilan = Panggilan.new
+    @terpanggil = @pengumumann.panggilans
+    @lamarans = Lamaran.where.not(dipanggil: true).order(created_at: :desc)
     if @pengumumann.update(pengumumann_params)
       flash[:success] = "Pengumumann berhasil disimpan!"
       render 'pengumumanns/show'

@@ -30,6 +30,7 @@ class LowongansController < ApplicationController
   
   def update
     @lowongan = Lowongan.find(params[:id])
+    @pelamars = @lowongan.lamarans.paginate(page: params[:page],:per_page => 5)
     if @lowongan.update(lowongan_params)
       flash[:success] = "Lowongan berhasil disimpan!"
       render 'lowongans/show'
