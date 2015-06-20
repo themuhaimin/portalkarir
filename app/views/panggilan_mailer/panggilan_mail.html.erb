@@ -1,0 +1,37 @@
+<p>Kepada <%= @user.profil.nama_lengkap %></p>
+<p>
+Sehubungan dengan lamaran Anda pada portal CARfix Indonesia 
+untuk jabatan <%= @jabatan.nama_jabatan %>,
+Maka kami dari bagian rekrutmen HRD CARfix Indonesia 
+mengundang Anda untuk datang pada 
+</p>
+<table>
+  <thead>  </thead>
+  <tbody>
+  <% if @pengumumann.tanggal.present? %>
+  <tr><td>Tanggal</td>
+  <td>: <%= @pengumumann.tanggal.strftime("%v") %></td></tr>
+  <% end %>
+  
+  <% if @pengumumann.tempat.present? %>
+  <tr><td>Tempat</td>
+  <td>: <%= @pengumumann.tempat %></td></tr>
+  <% end %>
+  
+  <% if @pengumumann.waktu.present? %>
+  <% if @pengumumann.waktu != "0001-01-01 00:00:00" %>
+  <tr><td>Waktu</td>
+  <td>: <%= @pengumumann.waktu.strftime("%H:%M") %></td></tr>
+  <% end %>
+  <% end %>
+  
+  <% if @pengumumann.kelengkapan.present? %>
+  <tr><td>Kelengkapan</td>
+  <td>:<%= simple_format(@pengumumann.kelengkapan) %></td></tr>
+  <% end %>
+  </tbody>
+</table>
+<p>
+Pengumuman selengkapnya dapat Anda lihat di alamat berikut :
+</p>
+<%=link_to "Pengumuman di Web", pengumumann_url(@pengumumann) %>
