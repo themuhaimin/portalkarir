@@ -1,7 +1,7 @@
 <% provide(:title, "Detail Pengumuman") %>
 <table class="table table-hover">
   <thead>
-    <th colspan="2"><h2></h2><%= @pengumumann.judul %></h2></th>
+    <th colspan="2"><%= @pengumumann.judul %></th>
   </thead>
   <tbody>
   <tr><td colspan="2"><%= simple_format( @pengumumann.deskripsi) %></td></tr>
@@ -16,14 +16,16 @@
   <td>: <%= @pengumumann.tempat %></td></tr>
   <% end %>
   
+  <% if @pengumumann.waktu.present? %>
   <% if @pengumumann.waktu != "0001-01-01 00:00:00" %>
-  <tr><td>Tempat</td>
+  <tr><td>Waktu</td>
   <td>: <%= @pengumumann.waktu.strftime("%H:%M") %></td></tr>
+  <% end %>
   <% end %>
   
   <% if @pengumumann.kelengkapan.present? %>
   <tr><td>Kelengkapan</td>
-  <td>:<%= simple_format(@pengumumann.kelengkapan) %></td></tr>
+  <td> <%= simple_format(@pengumumann.kelengkapan) %></td></tr>
   <% end %>
   </tbody>
 </table>

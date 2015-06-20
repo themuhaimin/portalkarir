@@ -12,7 +12,7 @@
 <tbody>
   <% @lamarans.each do |a| %>
   <tr>
-    <td><%= link_to a.user.nama, user_profil_path(:user_id => a.user.id) %></td>
+    <td><%= link_to a.user.profil.nama_lengkap, user_profil_path(:user_id => a.user.id) %></td>
     <td><%= a.lowongan.jabatan.nama_jabatan %></td>
     <td><% if a.dipanggil? %>Sudah dipanggil
                     <% else %>Belum dipanggil

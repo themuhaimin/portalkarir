@@ -1,13 +1,19 @@
 <% provide(:title, "Detail Lowongan") %>
-<p>
-  <strong>Detail Lowongan</strong></br>
-  <strong><%= @lowongan.jabatan.nama_jabatan %></strong></br>
-  Pendidikan minimal :<%= @lowongan.pendidikan.level_pend %></br>
-  Usia Maksimal :<%= @lowongan.limit_umur %></br>
-  Keterangan Umum :</br><%= simple_format(@lowongan.ket_umum) %></br>
-  Deskripsi Pekerjaan :</br><%= simple_format(@lowongan.deskripsi) %></br>
-  Dibuka s.d tanggal :<%= @lowongan.max_tgl.strftime("%v") %></br>
-</p>
+<table class="table table-hover">
+  <thead>
+    <th ><strong>Detail Lowongan</strong></th>
+    <th ><strong><%= @lowongan.jabatan.nama_jabatan %></strong></th>
+  </thead>
+  <tbody>
+  <tr><td>Pendidikan : <%= @lowongan.pendidikan.level_pend %></td></tr>
+  <tr><td>Usia Maksimal : <%= @lowongan.limit_umur %> tahun</td></tr>
+  <tr><td>Keterangan Umum :</td></tr>
+  <tr><td><%= simple_format(@lowongan.ket_umum) %></td></tr>
+  <tr><td>Deskripsi Pekerjaan :</td></tr>
+  <tr><td><%= simple_format(@lowongan.deskripsi) %></td></tr>
+  <tr><td>Dibuka s.d tanggal :<%= @lowongan.max_tgl.strftime("%v") %></td></tr>
+</tbody>
+</table>
 <% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_lowongan_path(@lowongan), class: "btn btn-primary" %>
 </br>
@@ -16,7 +22,7 @@
 <ul class="users">
   <% @pelamars.each do |pelamar| %>
     <% if !pelamar.nil? %>
-    <li><%= link_to pelamar.user.nama, user_profil_path(:user_id => pelamar.user.id) %> </li>
+    <li><%= link_to pelamar.user.profil.nama_lengkap, user_profil_path(:user_id => pelamar.user.id) %> </li>
   <% end %>
   <% end %>
 </ul>

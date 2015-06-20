@@ -20,12 +20,12 @@ class LowongansControllerTest < ActionController::TestCase
     assert_response :success
   end
   
-  test "should redirect to index if not admin try new" do
+  test "should get new" do
     get :new
     assert_redirected_to lowongans_url
   end
   
-  test "should redirect to index if not admin try edit" do
+  test "should get edit" do
     get :edit, id: @lowongan
     assert_redirected_to lowongans_url
   end
