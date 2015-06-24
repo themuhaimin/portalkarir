@@ -9,7 +9,7 @@ class LamaransController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @lowongan = Lowongan.find(params[:lowongan_id])
-    if @user.profil.nama.nil?
+    if @user.profil.nama_lengkap.nil?
       flash[:alert] = "Lengkapi data diri Anda."
       redirect_to @user.profil
     elsif @user.profil.tgl_lahir < @lowongan.limit_umur.years.ago.localtime
