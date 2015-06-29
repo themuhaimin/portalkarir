@@ -18,21 +18,34 @@
 <%= link_to 'Edit', edit_lowongan_path(@lowongan), class: "btn btn-primary" %>
 </br>
 </br>
-<strong>Daftar Pelamar</strong></br>
-<ul class="users">
-  <% @pelamars.each do |pelamar| %>
-    <% if !pelamar.nil? %>
-    <li><%= link_to pelamar.user.profil.nama_lengkap, user_profil_path(:user_id => pelamar.user.id) %> </li>
-  <% end %>
-  <% end %>
-</ul>
+<table class="table table-hover">
+  <thead>
+    <tr><th colspan="3"><strong>Daftar Pelamar</strong></th></tr>
+    <tr><th>Nama Pelamar</th>
+    <th>No. HP</th>
+    <th>Sekolah/Universitas</th></tr>
+  </thead>
+  <tbody>
+    <% @pelamars.each do |pelamar| %>
+      <% if !pelamar.nil? %>
+      <tr><td><%= link_to pelamar.user.profil.nama_lengkap, user_profil_path(:user_id => pelamar.user.id) %></td>
+      <td><%=  pelamar.user.profil.no_hp %></td>
+      <td><%=  pelamar.user.profil.nama_pend %></td></tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 <%= will_paginate @pelamars %>
 <% elsif user_signed_in? %>
-  <%= form_for @lamaran do |f| %>
-  <div><%= hidden_field_tag :user_id, current_user.id %>
-  <%= hidden_field_tag :lowongan_id, @lowongan.id %>
-  <%= hidden_field_tag :dipanggil, false %></div>
-  <%= f.submit "Lamar", class: "btn btn-primary" %>
+  <% if Lamaran.where(:user_id => current_user.id).where(:lowongan_id => @lowongan.id).present? %>
+    <%= link_to "Sudah dilamar", '#', class: "btn btn-primary disabled" %>
+  <% else %>
+    <%= form_for @lamaran do |f| %>
+    <div><%= hidden_field_tag :user_id, current_user.id %>
+    <%= hidden_field_tag :lowongan_id, @lowongan.id %>
+    <%= hidden_field_tag :dipanggil, false %></div>
+    <%= f.submit "Lamar", class: "btn btn-primary" %>
+    <% end %>
   <% end %>
 <% else %>
 </br>Silakan <%= link_to "Login", new_user_session_path %> untuk bisa melamar lowongan
