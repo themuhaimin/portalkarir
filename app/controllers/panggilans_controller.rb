@@ -7,7 +7,7 @@ class PanggilansController < ApplicationController
     @panggilan = Panggilan.new(panggilan_params)
       if @panggilan.save
         @lamaran.update(dipanggil: true)
-        PanggilansMailer.panggilan_mail(@panggilan).deliver_later
+        PanggilanMailer.panggilan_mail(@panggilan).deliver_later
         flash[:success] = "Nama berhasil ditambahkan!"
         redirect_to @pengumumann
       else
