@@ -40,7 +40,7 @@
   <tbody>
   <% @terpanggil.each do |terpanggil| %>
     <% if !terpanggil.nil? %>
-    <tr><td><%= link_to terpanggil.lamaran.user.nama, 
+    <tr><td><%= link_to terpanggil.lamaran.user.profil.nama_lengkap, 
     user_profil_path(:user_id => terpanggil.lamaran.user.id) %></td>
     <td><%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %></td>
     <td><%= link_to "Hapus Nama", terpanggil, method: :delete,
@@ -56,7 +56,7 @@
   <%= form_for @panggilan do |f| %>
   <div class="field">
     Pilih Pelamar yang akan dipanggil :
-  <%= f.collection_select :lamaran_id, @lamarans.collect{|x|OpenStruct.new(:lamaran_id => x.id, :desc => "#{x.user.nama} -- #{x.lowongan.jabatan.nama_jabatan}") },
+  <%= f.collection_select :lamaran_id, @lamarans.collect{|x|OpenStruct.new(:lamaran_id => x.id, :desc => "#{x.user.profil.nama_lengkap} -- #{x.lowongan.jabatan.nama_jabatan}") },
   :lamaran_id, :desc, include_blank: true  %>
   <%= f.hidden_field :pengumumann_id, :value => @pengumumann.id %>
   </div>
@@ -68,12 +68,13 @@
   <% if @terpanggil.first.present? %>
   <table class="table table-hover">
   <thead>
-    <th colspan="2">Daftar Nama</th>
+    <th colspan="3">Daftar Nama</th>
   </thead>
   <tbody>
   <% @terpanggil.each do |terpanggil| %>
     <% if !terpanggil.nil? %>
-    <tr><td><%= terpanggil.lamaran.user.nama %></td>
+    <tr><td><%= terpanggil.lamaran.user.profil.nama_lengkap %></td>
+    <td><%= terpanggil.lamaran.user.profil.nama_pend %></td>
     <td><%= terpanggil.lamaran.lowongan.jabatan.nama_jabatan %></td></tr>
     <% end %>
   <tbody>
