@@ -1,11 +1,10 @@
 <% provide(:title, 'Daftar users') %>
 <h1>Daftar User</h1>
-
 <%= will_paginate  %>
-
 <ul class="users">
   <% @users.each do |user| %>
     <li><%= link_to user.nama, user_profil_path(:user_id => user.id) %>
+    &nbsp &nbsp <%= user.email %>
     <% if user.id!=current_user.id %>
     <%= link_to "Hapus Akun", user, method: :delete,
     data: { confirm: "Anda yakin menghapus?" }, class: "btn btn-primary" %>
